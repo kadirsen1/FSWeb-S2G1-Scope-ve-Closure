@@ -30,6 +30,7 @@ console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin
   Aşağıdaki skor1 ve skor2 kodlarını inceleyiniz ve aşağıdaki soruları altına not alarak cevaplayın
   
   1. skor1 ve skor2 arasındaki fark nedir?
+  skor 1 closure global kullanmıyor skor 2 kullanıyor
   
   2. Hangisi bir closure kullanmaktadır? Nasıl tarif edebilirsin? (yarınki derste öğreneceksin :) )
   
@@ -64,10 +65,10 @@ Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
 Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyonu olarak da kullanılacak
 */
 
-function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+function takimSkoru(){
+    return Math.floor(Math.random() * 16) + 10;
 }
-
+console.log(takimSkoru());
 
 
 
@@ -86,11 +87,20 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */ 
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
+function macSonucu(callback,ceyrekSayisi){
+let EvSahibi = 0
+let KonukTakim = 0
+  
+for (let i=1; i <= ceyrekSayisi;i++){
+EvSahibi += callback();
+KonukTakim += callback();
 }
-
-
+return { 
+  EvSahibi:EvSahibi,
+  KonukTakim:KonukTakim,
+  };
+}
+console.log(macSonucu(takimSkoru, 4));
 
 
 
